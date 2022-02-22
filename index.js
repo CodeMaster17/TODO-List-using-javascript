@@ -2,7 +2,7 @@ console.log("This javascript file ran.")
 btnAdd = document.getElementById('btn-add');
 console.log(btnAdd);
 function UpdateList(){
-
+    
     console.log("Event listener applied on button");
     tit = document.getElementById('tit').value;
     console.log("tit: ", tit);
@@ -48,11 +48,12 @@ function update() {
             <td>${element[0]}</td>
             <td>${element[1]}</td>
             <td><button class="btn btn-primary" onclick=deleted(${index})>Delete</button></td>
-          </tr>`
+            </tr>`
     });
     tableBody.innerHTML = str;
 }
 btnAdd.addEventListener("click", UpdateList);
+// to delete the items using delete button
 function deleted(item){
     // fetching elements
     itemsJsonArrayStr = localStorage.getItem('ItemsJson');
@@ -64,6 +65,8 @@ function deleted(item){
 }
 // for clearing the whole list
 function clearStorage(){
+    // here confirm is a keyword to ask for confirmation
+    if(confirm("Do you really want to clear all the added items?"))
     console.log("Clearing the storage");
     localStorage.clear();
     update();
